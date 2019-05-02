@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+}
+
+.main_conteiner {
+	display: flex;
+}
+
+.block {
+	width: 100px;
+	height: 200px;
+	margin: 20px;
+	background-color: grey;
+}
