@@ -2,9 +2,13 @@
   margin: 0;
 }
 
+
+
+
 .main_conteiner {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .block {
