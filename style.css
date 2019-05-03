@@ -1,19 +1,28 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
-
-
-
 
 .main_conteiner {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	padding: 10px;
+	position: relative;
 }
 
 .block {
 	width: 100px;
 	height: 200px;
-	margin: 20px;
 	background-color: grey;
+	margin: 10px;
+
 }
+
+.left_content {
+	justify-content: left;
+}
+
+.center_content {
+	justify-content: center;
+}
+
