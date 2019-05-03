@@ -22,6 +22,11 @@
 
 const main = document.getElementsByClassName('block');
 const mainBlock = document.querySelector('.main_conteiner');
+const button = document.getElementById('but');
+const div = document.createElement("div");
+
+div.className ='block';
+
 window.onresize = function(event) {
     const ifItsLast = [];
       
@@ -37,12 +42,7 @@ window.onresize = function(event) {
       mainBlock.classList.remove('left_content');
       mainBlock.classList.add("center_content");
     }
-    console.log(event); 
 };
-
-const button = document.getElementById('but');
-let div = document.createElement("div");
-div.className ='block';
 
 button.onclick = () => {
   let div = document.createElement("div");

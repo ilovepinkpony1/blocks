@@ -27,11 +27,10 @@
 }
 
 .botton {
-	margin: 20px auto;
 	width: 100px;
 	height: 100px;
 	display: block;
 	position: absolute;
-	bottom: 0px;
 	left: 45%;
+	bottom: 0;
 }
