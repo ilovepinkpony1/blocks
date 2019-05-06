@@ -3,34 +3,21 @@
   box-sizing: border-box;
 }
 
-.main_conteiner {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 10px;
-	position: relative;
-}
-
-.block {
-	width: 100px;
-	height: 200px;
-	background-color: grey;
-	margin: 10px;
-
-}
-
-.left_content {
-	justify-content: left;
-}
-
-.center_content {
-	justify-content: center;
-}
-
-.botton {
-	width: 100px;
-	height: 100px;
-	display: block;
+.simpleBox {
+	width: 12px;
+	height: 12px;
+	background-color: #000000;
+	margin: 1px;
+	border: 1px solid green;
 	position: absolute;
-	left: 45%;
-	bottom: 0;
+	top: 0;
+	left: 0;
 }
+
+.randomBox {
+	background-color: coral;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+}
+
