@@ -2,6 +2,7 @@
 
 const snake = createSnake();
 const apples = createSnakeFood();
+const positionOfBody = [];
 
 let rightClear,
   leftClear,
@@ -11,11 +12,15 @@ let rightClear,
 let snakeHead,
   divStyle,
   food,
-  moveTime = 70,
+  moveTime = 100,
   foodLeft,
-  foodTop;
+  foodTop,
+  snakeBody,
+  count = 0,
+  boxes;
 
 function createSnake() {
+
 const snake = {};
 
 snake.growHead = () => {
@@ -28,6 +33,7 @@ snake.growHead = () => {
 snake.moveRight = () => {
   rightClear = setInterval(() => {
   snakeHead.style.left = `${parseInt(divStyle.left, 10) + 10}px`;
+  positionOfBody.unshift([parseInt(divStyle.left, 10), parseInt(divStyle.top, 10)]);
   snake.eat();
   }, moveTime);
 }
@@ -35,6 +41,7 @@ snake.moveRight = () => {
 snake.moveLeft = () => {
   leftClear = setInterval(() => {
   snakeHead.style.left = `${parseInt(divStyle.left, 10) - 10}px`;
+  positionOfBody.unshift([parseInt(divStyle.left, 10), parseInt(divStyle.top, 10)]);
   snake.eat();
   }, moveTime);
 }
@@ -42,6 +49,7 @@ snake.moveLeft = () => {
 snake.moveTop = () => {
   topClear = setInterval(() => {
   snakeHead.style.top = `${parseInt(divStyle.top, 10) - 10}px`;
+  positionOfBody.unshift([parseInt(divStyle.left, 10), parseInt(divStyle.top, 10)]);
   snake.eat();
   }, moveTime);
 }
@@ -49,6 +57,7 @@ snake.moveTop = () => {
 snake.moveBottom = () => {
   bottomClear = setInterval(() => {
   snakeHead.style.top = `${parseInt(divStyle.top, 10) + 10}px`;
+  positionOfBody.unshift([parseInt(divStyle.left, 10), parseInt(divStyle.top, 10)]);
   snake.eat();
   }, moveTime);
 }
@@ -67,6 +76,7 @@ snake.eat =	() => {
   && ((foodTop <= parseInt(divStyle.top, 10) + 10) && (foodTop + 10 >= parseInt(divStyle.top, 10) + 10)))) {
     document.body.removeChild(food);
     apples.grow();
+    snake.grow();
   }
 }
 
@@ -77,19 +87,27 @@ snake.stopMove = () => {
   clearInterval(bottomClear);
 }
 
-snake.wormFaster = () => {
-  moveTime -= 100;
-}
-
-snake.growTail = () => {
-  snake.growHead();
-}
-
-snake.grow = () => {
-  if (calories > 0) {
+  snake.wormFaster = () => {
+    moveTime -= 100;
   }
-}
-return snake;
+
+  snake.grow = () => {
+    snakeBody = document.createElement('div'); 
+    snakeBody.classList.add("simpleBox");
+    document.body.appendChild(snakeBody);
+    count++;
+    boxes = document.getElementsByClassName('simpleBox');
+    snake.bodyMove(count);
+  }
+
+  snake.bodyMove = (count) => {
+    setInterval(() => {
+       boxes[count].style.left = `${positionOfBody[count][0]}px`;
+       boxes[count].style.top = `${positionOfBody[count][1]}px`;
+    }, moveTime);
+  }
+
+  return snake;
 }
 
 function createSnakeFood() {
